@@ -1,8 +1,6 @@
 import os
 from docx import Document
 import re
-import networkx as nx
-import matplotlib.pyplot as plt
 
 class Character:
     def __init__(self, name):
@@ -48,7 +46,7 @@ people = [
     "doctor john argentine",
     "giuliano della rovere, cardinal deacon of san pietro in vincula",
     "giovanni battista zen",
-    # "louis of orleans, regent of france and naples, duke of orleans and milan",
+    "louis of orleans, regent of france and naples, duke of orleans and milan",
     "galahad sanseverino",
     "johann burchard",
     "ascanio maria visconti sforza, cardinal of cremona",
@@ -88,7 +86,7 @@ def parser():
         document = Document(directory + file_name)
         extract = document.paragraphs
         name = (extract[0].text.split("From")[0][6:].rstrip())
-        if "ardicino della porta" in name.lower() or "louis of orleans, regent" in name.lower():
+        if "ardicino della porta" in name.lower():
             continue
         current = Character(name)
         current.other = extract[0].text
